@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://jmlcampbell.github.io/atom.xml" rel="self"/>
+  <link href="http://jmlcampbell.github.io/"/>
+  <updated>2013-07-10T09:07:48-04:00</updated>
+  <id>http://jmlcampbell.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[first post]]></title>
+    <link href="http://jmlcampbell.github.io/blog/2013/07/10/first-post/"/>
+    <updated>2013-07-10T02:04:00-04:00</updated>
+    <id>http://jmlcampbell.github.io/blog/2013/07/10/first-post</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[binding.pry dissected]]></title>
+    <link href="http://jmlcampbell.github.io/blog/2013/06/21/trial/"/>
+    <updated>2013-06-21T10:06:00-04:00</updated>
+    <id>http://jmlcampbell.github.io/blog/2013/06/21/trial</id>
+    <content type="html"><![CDATA[<p>binding.pry is magic. Or so it seemed to be when I first started using it. You can place it anywhere in your program and it is best debugger tool in the world.</p>
+
+<p><h3>binding <h3></p>
+
+<p>The binding method allows us to seize variable bindings available at a certain point in our code and pass those variables to a different point in the script. It&rsquo;s like taking a snapshot of all the variables available the instant binding is called. Here&rsquo;s a simple example:</p>
+
+<p>def example_binding</p>
+
+<pre><code>number = 77
+</code></pre>
+
+<p>Let&rsquo;s pretend we&rsquo;re on Deal or No Deal</p>
+
+<p>class Box</p>
+
+<pre><code>def initialize 
+    @prize = [:a_million_dollars]
+end 
+
+def get_prize
+    binding
+end 
+</code></pre>
+
+<p>end</p>
+
+<p>your_hands = []
+box = Box.new</p>
+
+<p>box.get_prize.eval(@prize) #=> [:teddy_bear]
+your_hands &lt;&lt; box.get_prize.eval(&lsquo;@prize.pop&rsquo;)
+your_hands.inspect #=> [:teddy_bear]
+box.your_hands.eval(@prize) #=> []</p>
+
+<p>Binding is worth a million bucks.</p>
+
+<p><h3>Pry<h3></p>
+
+<pre><code>It is important to remember context when you call pry. Pry always starts a new session in the context of the object that it is called upon. By default, the context is 'main' when you call pry via the command-line interface, which is displayed in the prompt. 
+
+pry(main)&gt; "Hey, I'm Over Here!".pry
+pry("Hey, I'm Over Here!")&gt; exit 
+
+This is pretty cool..
+
+pry(main)&gt; "Hey, I'm Over Here!".pry
+pry("Hey, I'm Over Here!")&gt; upcase 
+=&gt;"HEY, I'M OVER HERE!"
+
+class Kanye 
+    def play
+        song = 'diamonds'
+        "NOW Playing #{binding.pry}"
+    end 
+end 
+
+song = Kanye.new
+song.play
+
+pry(#&lt;Kanye&gt;)&gt; song
+=&gt; 'diamonds'
+
+Pry will also take any ruby object as an argument. 
+
+pry(main)&gt; pry 'takes_an_argument'
+pry('takes_an_argument')&gt; 
+</code></pre>
+
+<p>Basically, binding.pry is awesome.</p>
+
+<p><h3>pry<h3></p>
+]]></content>
+  </entry>
+  
+</feed>
